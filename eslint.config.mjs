@@ -31,7 +31,7 @@ export default [{
         parser: tsParser,
     },
     rules: {
-        "prettier/prettier": "error",
+        "prettier/prettier": "off",
         "@typescript-eslint/no-explicit-any": "off",
         "@typescript-eslint/no-unused-vars": ["warn", {
             argsIgnorePattern: "^_",

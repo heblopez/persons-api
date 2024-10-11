@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { Request, Response } from 'express';
 import personsRouter from './routes/person.routes';
 import infoRouter from './routes/info.routes';
 
@@ -6,7 +6,7 @@ const app = express();
 
 app.use(express.json());
 
-app.get('/api', (_req, res) => {
+app.get('/api', (_req: Request, res: Response) => {
   res.send('Hello World!');
 });
 
