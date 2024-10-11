@@ -34,6 +34,20 @@ export const deletePersonById = (req: Request, res: Response): Response => {
 export const createPerson = (req: Request, res: Response): Response => {
   const { name, number } = req.body;
 
+  if (!name || !number) {
+    return res
+      .status(400)
+      .json({ message: 'Missing required fields: name and number' });
+  }
+
+  if (
+    persons.find((person) => person.name.toLowerCase() === name.toLowerCase())
+  ) {
+    return res
+      .status(400)
+      .json({ message: 'Name already exists in the phonebook' });
+  }
+
   let newId = Math.ceil(Math.random() * 1000);
 
   while (persons.find((person) => person.id === newId)) {
@@ -42,7 +56,7 @@ export const createPerson = (req: Request, res: Response): Response => {
 
   const person = {
     id: newId,
-    name,
+    name: name.toString(),
     number: number.toString()
   };
 
