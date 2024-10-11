@@ -1,10 +1,12 @@
 import express, { Request, Response } from 'express';
+import morgan from 'morgan';
 import personsRouter from './routes/person.routes';
 import infoRouter from './routes/info.routes';
 
 const app = express();
 
 app.use(express.json());
+app.use(morgan('tiny'));
 
 app.get('/api', (_req: Request, res: Response) => {
   res.send('Hello World!');
