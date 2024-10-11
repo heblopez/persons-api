@@ -1,5 +1,6 @@
 import express, { Request, Response } from 'express';
 import morgan from 'morgan';
+import cors from 'cors';
 import personsRouter from './routes/person.routes';
 import infoRouter from './routes/info.routes';
 
@@ -29,6 +30,8 @@ app.use(
 app.get('/api', (_req: Request, res: Response) => {
   res.send('Hello World!');
 });
+
+app.use(cors());
 
 app.use('/api/persons', personsRouter);
 app.use('/info', infoRouter);
