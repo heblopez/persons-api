@@ -16,3 +16,17 @@ export const getPersonById = (req: Request, res: Response): Response => {
 
   return res.json(person);
 };
+
+export const deletePersonById = (req: Request, res: Response): Response => {
+  const { id } = req.params;
+
+  const person = persons.find((person) => person.id === parseInt(id));
+
+  if (!person) {
+    return res.status(404).json({ message: 'Person to delete not found' });
+  }
+
+  persons.splice(persons.indexOf(person), 1);
+
+  return res.json({ message: 'Person deleted' });
+};
