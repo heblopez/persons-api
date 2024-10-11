@@ -6,7 +6,25 @@ import infoRouter from './routes/info.routes';
 const app = express();
 
 app.use(express.json());
-app.use(morgan('tiny'));
+
+app.use(
+  morgan('tiny', {
+    skip: (req: Request) => req.method === 'POST'
+  })
+);
+
+morgan.token('body', (req: Request) => {
+  return req.method === 'POST' ? JSON.stringify(req.body) : '';
+});
+
+app.use(
+  morgan(
+    ':method :url :status :res[content-length] - :response-time ms :body',
+    {
+      skip: (req: Request) => req.method !== 'POST'
+    }
+  )
+);
 
 app.get('/api', (_req: Request, res: Response) => {
   res.send('Hello World!');
