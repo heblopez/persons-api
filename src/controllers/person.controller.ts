@@ -30,3 +30,23 @@ export const deletePersonById = (req: Request, res: Response): Response => {
 
   return res.json({ message: 'Person deleted' });
 };
+
+export const createPerson = (req: Request, res: Response): Response => {
+  const { name, number } = req.body;
+
+  let newId = Math.ceil(Math.random() * 1000);
+
+  while (persons.find((person) => person.id === newId)) {
+    newId = Math.ceil(Math.random() * 1000);
+  }
+
+  const person = {
+    id: newId,
+    name,
+    number: number.toString()
+  };
+
+  persons.push(person);
+
+  return res.json(person);
+};
