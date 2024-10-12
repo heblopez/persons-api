@@ -1,6 +1,6 @@
 # 📞 Persons API - Backend with TypeScript and Express
 
-This is a backend project for a phonebook application developed using **Node.js**, **Express**, and **TypeScript**. It provides an API to manage a list of persons, allowing you to create, read, and delete persons to the the phonebook.
+This is a backend project for a phonebook application developed using **Node.js**, **Express**, and **TypeScript**. It provides an API to manage a list of persons, allowing you to create, read, update, and delete(CRUD) persons to the the phonebook.
 
 ## 🚀 Features
 
@@ -14,7 +14,7 @@ This is a backend project for a phonebook application developed using **Node.js*
 - **Node.js** version `18.x` or higher.
 - **npm** (comes with Node.js).
 - **Express** version `4.21.1`.
-- **TypeScript** version `^5.x`.
+- **TypeScript** version `5.5.3`.
 - **@types/express** version `4.17.21` for Express types.
 
 ## 📂 Project Structure
@@ -76,6 +76,7 @@ npm start    # The server will be available at http://localhost:3001 by default.
 | GET    | `/api/persons`      | Retrieves all persons                    |
 | GET    | `/api/persons/:id`  | Retrieves a person by its ID             |
 | POST   | `/api/persons`      | Creates a new person                     |
+| PUT    | `/api/persons/:id`  | Updates a person by its ID               |
 | DELETE | `/api/persons/:id`  | Deletes a person by its ID               |
 | GET    | `/info`             | Retrieves info about the phonebook       |
 
