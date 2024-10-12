@@ -64,3 +64,37 @@ export const createPerson = (req: Request, res: Response): Response => {
 
   return res.json(person);
 };
+
+export const updatePersonById = (req: Request, res: Response): Response => {
+  const { id } = req.params;
+  const { name, number } = req.body;
+
+  const person = persons.find((person) => person.id === parseInt(id));
+
+  if (!person) {
+    return res.status(404).json({ message: 'Person to update not found' });
+  }
+
+  if (!name || !number) {
+    return res
+      .status(400)
+      .json({ message: 'Missing required fields: name and number' });
+  }
+
+  if (
+    persons.find(
+      (person) =>
+        person.name.toLowerCase() === name.toLowerCase() &&
+        person.id !== parseInt(id)
+    )
+  ) {
+    return res.status(400).json({
+      message: 'Name already exists in the phonebook. Try another one.'
+    });
+  }
+
+  person.name = name.toString();
+  person.number = number.toString();
+
+  return res.json(person);
+};
