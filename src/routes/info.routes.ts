@@ -1,4 +1,4 @@
-import { getInfo } from '@/controllers/info.controller';
+import { getInfo } from '../controllers/info.controller';
 import { Router } from 'express';
 
 const infoRouter = Router();

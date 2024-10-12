@@ -1,4 +1,4 @@
-import { persons } from '@/data/persons';
+import { persons } from '../data/persons';
 import { Request, Response } from 'express';
 
 export const getInfo = (_req: Request, res: Response): void => {
